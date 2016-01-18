@@ -16,7 +16,9 @@
     if (randomIndex == 0) {
         return nil;
     }
-    return (NSNumber *)self[arc4random()%randomIndex];
+    
+    NSNumber *n = (NSNumber *)self[arc4random()%randomIndex];
+    return n;
 }
 
 @end

@@ -10,14 +10,13 @@
 #import "NSMutableArray+lottery.h"
 #import <AudioToolbox/AudioToolbox.h>
 
-static NSUInteger AMOUNTS = 40;
-
 @interface ViewController() {
     
     SystemSoundID winSoundID;
     SystemSoundID crunchSoundID;
     NSTimer *timer;
     NSUInteger times;
+    NSUInteger doubleTimes;
 }
 
 @property (weak) IBOutlet NSTextField *LotteryLabel;
@@ -36,7 +35,9 @@ static NSUInteger AMOUNTS = 40;
     [super viewDidLoad];
     
     self.LotteryLabel.stringValue = @"0";
-
+    times = 0;
+    doubleTimes = 0;
+    
     [self initArray];
     [self initLuckyNumbers];
     
@@ -52,21 +53,26 @@ static NSUInteger AMOUNTS = 40;
 
 -(void)initArray {
     NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"lotterys" ofType:@"plist"]];
-    self.doubleNumbers = [NSMutableArray arrayWithContentsOfURL:url];
+    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfURL:url];
+    self.doubleNumbers = dic[@"Double"];
     self.selectedNumbers = [NSMutableArray array];
     self.luckyNumbers = [NSMutableArray array];
     self.lotteryNumbers = [NSMutableArray array];
-    times = 0;
-    for (int i = 0; i < AMOUNTS; i++) {
+    NSNumber *n = dic[@"Amount"];
+    for (long i = 0; i < n.longLongValue; i++) {
         [self.lotteryNumbers addObject:@(i)];
     }
+    [self.lotteryNumbers removeObjectsInArray:self.doubleNumbers];
 }
 
 -(void)initLuckyNumbers {
  
+    //三等奖
     [self double];
     [self winner];
     [self winner];
+    
+    //二等奖
     [self double];
     [self double];
     [self double];
@@ -74,6 +80,8 @@ static NSUInteger AMOUNTS = 40;
     [self winner];
     [self winner];
     [self winner];
+    
+    //一等奖
     [self double];
     [self double];
     [self double];
@@ -84,7 +92,7 @@ static NSUInteger AMOUNTS = 40;
 }
 
 -(void)double {
-    NSNumber *n = self.doubleNumbers.random;
+    NSNumber *n = self.doubleNumbers[0];
     [self.doubleNumbers removeObject:n];
     [self.lotteryNumbers removeObject:n];
     [self.luckyNumbers addObject:n];
@@ -112,7 +120,7 @@ static NSUInteger AMOUNTS = 40;
 
 -(void)luckyDrawAnimate {
     
-    self.LotteryLabel.stringValue = [NSString stringWithFormat:@"%lu",arc4random()%AMOUNTS];
+    self.LotteryLabel.stringValue = [NSString stringWithFormat:@"%u",arc4random()%45];
     [self performSelector:@selector(playCrunchSound)
                withObject:nil
                afterDelay:.5];
