@@ -12,6 +12,11 @@
 		01069EF91C48CB1200D89432 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01069EF81C48CB1200D89432 /* ViewController.m */; };
 		01069EFB1C48CB1200D89432 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01069EFA1C48CB1200D89432 /* Assets.xcassets */; };
 		01069EFE1C48CB1200D89432 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01069EFC1C48CB1200D89432 /* Main.storyboard */; };
+		01069F061C492D3200D89432 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01069F051C492D3200D89432 /* AudioToolbox.framework */; };
+		01069F091C492D7300D89432 /* crunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 01069F071C492D7300D89432 /* crunch.wav */; };
+		01069F0C1C492E3D00D89432 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 01069F0B1C492E3D00D89432 /* win.wav */; };
+		016AD3FD1C4A9AEF0097C4D3 /* lotterys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 016AD3FC1C4A9AEE0097C4D3 /* lotterys.plist */; };
+		01C56A8F1C4CEA1D000EE911 /* NSMutableArray+lottery.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C56A8E1C4CEA1D000EE911 /* NSMutableArray+lottery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,12 @@
 		01069EFA1C48CB1200D89432 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01069EFD1C48CB1200D89432 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01069EFF1C48CB1200D89432 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01069F051C492D3200D89432 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		01069F071C492D7300D89432 /* crunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crunch.wav; sourceTree = "<group>"; };
+		01069F0B1C492E3D00D89432 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		016AD3FC1C4A9AEE0097C4D3 /* lotterys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lotterys.plist; sourceTree = "<group>"; };
+		01C56A8D1C4CEA1D000EE911 /* NSMutableArray+lottery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+lottery.h"; sourceTree = "<group>"; };
+		01C56A8E1C4CEA1D000EE911 /* NSMutableArray+lottery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+lottery.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01069F061C492D3200D89432 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +52,7 @@
 		01069EE51C48CB1200D89432 = {
 			isa = PBXGroup;
 			children = (
+				01069F051C492D3200D89432 /* AudioToolbox.framework */,
 				01069EF01C48CB1200D89432 /* Lottery */,
 				01069EEF1C48CB1200D89432 /* Products */,
 			);
@@ -56,10 +69,15 @@
 		01069EF01C48CB1200D89432 /* Lottery */ = {
 			isa = PBXGroup;
 			children = (
+				01069F071C492D7300D89432 /* crunch.wav */,
+				01069F0B1C492E3D00D89432 /* win.wav */,
 				01069EF11C48CB1200D89432 /* AppDelegate.h */,
 				01069EF21C48CB1200D89432 /* AppDelegate.m */,
 				01069EF71C48CB1200D89432 /* ViewController.h */,
 				01069EF81C48CB1200D89432 /* ViewController.m */,
+				01C56A8D1C4CEA1D000EE911 /* NSMutableArray+lottery.h */,
+				01C56A8E1C4CEA1D000EE911 /* NSMutableArray+lottery.m */,
+				016AD3FC1C4A9AEE0097C4D3 /* lotterys.plist */,
 				01069EFA1C48CB1200D89432 /* Assets.xcassets */,
 				01069EFC1C48CB1200D89432 /* Main.storyboard */,
 				01069EFF1C48CB1200D89432 /* Info.plist */,
@@ -134,6 +152,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01069EFB1C48CB1200D89432 /* Assets.xcassets in Resources */,
+				01069F0C1C492E3D00D89432 /* win.wav in Resources */,
+				01069F091C492D7300D89432 /* crunch.wav in Resources */,
+				016AD3FD1C4A9AEF0097C4D3 /* lotterys.plist in Resources */,
 				01069EFE1C48CB1200D89432 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +169,7 @@
 				01069EF91C48CB1200D89432 /* ViewController.m in Sources */,
 				01069EF61C48CB1200D89432 /* main.m in Sources */,
 				01069EF31C48CB1200D89432 /* AppDelegate.m in Sources */,
+				01C56A8F1C4CEA1D000EE911 /* NSMutableArray+lottery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +309,7 @@
 				01069F041C48CB1200D89432 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6198" systemVersion="14A297b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6198"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -641,12 +643,12 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider=""/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
@@ -667,15 +669,52 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="608" height="602"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lNH-pJ-j0O">
+                                <rect key="frame" x="0.0" y="0.0" width="608" height="602"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="lotteryDraw" id="rly-CL-Y10"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y0q-4A-mMd">
+                                <rect key="frame" x="205" y="169" width="200" height="354"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="2eF-S8-qXX">
+                                    <font key="font" metaFont="systemBold" size="300"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TuU-K0-hlf">
+                                <rect key="frame" x="131" y="32" width="348" height="41"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="TouchSpring X PaRKDODO" id="u6Z-fz-PCg">
+                                    <font key="font" size="35" name="CenturyGothic"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="lNH-pJ-j0O" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="RpV-as-BPV"/>
+                            <constraint firstItem="lNH-pJ-j0O" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="WZX-MK-usw"/>
+                            <constraint firstItem="y0q-4A-mMd" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Zyi-73-tZT"/>
+                            <constraint firstItem="TuU-K0-hlf" firstAttribute="centerX" secondItem="y0q-4A-mMd" secondAttribute="centerX" id="bhs-Cp-QT7"/>
+                            <constraint firstItem="y0q-4A-mMd" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" multiplier="0.85" id="eQT-dv-OdZ"/>
+                            <constraint firstAttribute="trailing" secondItem="lNH-pJ-j0O" secondAttribute="trailing" id="jTE-UI-qbP"/>
+                            <constraint firstAttribute="bottom" secondItem="lNH-pJ-j0O" secondAttribute="bottom" id="q6g-Ty-CPy"/>
+                            <constraint firstItem="TuU-K0-hlf" firstAttribute="top" secondItem="y0q-4A-mMd" secondAttribute="bottom" constant="96" id="tZX-Re-3Db"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="LotteryLabel" destination="y0q-4A-mMd" id="AKf-50-8pe"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="139" y="820.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lotteryDraw" width="345.60000610351562" height="216"/>
+    </resources>
 </document>
