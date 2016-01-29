@@ -15,6 +15,7 @@
 		01069F061C492D3200D89432 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01069F051C492D3200D89432 /* AudioToolbox.framework */; };
 		01069F091C492D7300D89432 /* crunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 01069F071C492D7300D89432 /* crunch.wav */; };
 		01069F0C1C492E3D00D89432 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = 01069F0B1C492E3D00D89432 /* win.wav */; };
+		013211851C577F7700A3EC0F /* StuffList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 013211841C577F7700A3EC0F /* StuffList.plist */; };
 		016AD3FD1C4A9AEF0097C4D3 /* lotterys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 016AD3FC1C4A9AEE0097C4D3 /* lotterys.plist */; };
 		01C56A8F1C4CEA1D000EE911 /* NSMutableArray+lottery.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C56A8E1C4CEA1D000EE911 /* NSMutableArray+lottery.m */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		01069F051C492D3200D89432 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		01069F071C492D7300D89432 /* crunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crunch.wav; sourceTree = "<group>"; };
 		01069F0B1C492E3D00D89432 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		013211841C577F7700A3EC0F /* StuffList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StuffList.plist; sourceTree = "<group>"; };
 		016AD3FC1C4A9AEE0097C4D3 /* lotterys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lotterys.plist; sourceTree = "<group>"; };
 		01C56A8D1C4CEA1D000EE911 /* NSMutableArray+lottery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+lottery.h"; sourceTree = "<group>"; };
 		01C56A8E1C4CEA1D000EE911 /* NSMutableArray+lottery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+lottery.m"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				01C56A8D1C4CEA1D000EE911 /* NSMutableArray+lottery.h */,
 				01C56A8E1C4CEA1D000EE911 /* NSMutableArray+lottery.m */,
 				016AD3FC1C4A9AEE0097C4D3 /* lotterys.plist */,
+				013211841C577F7700A3EC0F /* StuffList.plist */,
 				01069EFA1C48CB1200D89432 /* Assets.xcassets */,
 				01069EFC1C48CB1200D89432 /* Main.storyboard */,
 				01069EFF1C48CB1200D89432 /* Info.plist */,
@@ -151,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013211851C577F7700A3EC0F /* StuffList.plist in Resources */,
 				01069EFB1C48CB1200D89432 /* Assets.xcassets in Resources */,
 				01069F0C1C492E3D00D89432 /* win.wav in Resources */,
 				01069F091C492D7300D89432 /* crunch.wav in Resources */,
@@ -273,6 +277,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Lottery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.frankxzx.Lottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -285,6 +290,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Lottery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.frankxzx.Lottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

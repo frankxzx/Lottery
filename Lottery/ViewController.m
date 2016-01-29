@@ -10,11 +10,13 @@
 #import "NSMutableArray+lottery.h"
 #import <AudioToolbox/AudioToolbox.h>
 
+#define X @29
 @interface ViewController() {
     
     SystemSoundID winSoundID;
     SystemSoundID crunchSoundID;
     NSTimer *timer;
+    NSTimer *timer2;
     NSUInteger times;
     NSUInteger doubleTimes;
 }
@@ -25,6 +27,7 @@
 @property (nonatomic, strong) NSMutableArray *selectedNumbers;
 @property (nonatomic, strong) NSMutableArray *luckyNumbers;
 @property (nonatomic, strong) NSMutableArray *lotteryNumbers;
+@property (nonatomic, strong) NSMutableArray *stuffList;
 
 @end
 
@@ -42,11 +45,26 @@
     [self initLuckyNumbers];
     
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler: ^NSEvent * (NSEvent *theEvent){
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            timer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(luckyDrawAnimate) userInfo:nil repeats:YES];
-        });
-        [self trigger];
+
+        switch ([[theEvent charactersIgnoringModifiers] characterAtIndex:0]) {
+            case NSUpArrowFunctionKey: {
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                    timer2 = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(luckyDrawStuffNameAnimate) userInfo:nil repeats:YES];
+                });
+                [self trigger2];
+            }
+                break;
+      
+            default: {
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                    timer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(luckyDrawAnimate) userInfo:nil repeats:YES];
+                });
+                [self trigger];
+            }
+                break;
+        }
         return theEvent;
     }];
 }
@@ -59,34 +77,54 @@
     self.luckyNumbers = [NSMutableArray array];
     self.lotteryNumbers = [NSMutableArray array];
     NSNumber *n = dic[@"Amount"];
-    for (long i = 0; i < n.longLongValue; i++) {
+    for (long i = 1; i <= n.longLongValue; i++) {
         [self.lotteryNumbers addObject:@(i)];
     }
     [self.lotteryNumbers removeObjectsInArray:self.doubleNumbers];
+    {
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"StuffList" ofType:@"plist"]];
+    NSArray *array = [NSArray arrayWithContentsOfURL:url];
+    self.stuffList = [NSMutableArray arrayWithArray:array];
+    }
 }
 
 -(void)initLuckyNumbers {
  
+    //四等奖
+    [self winner];
+    [self winner];
+    [self winner];
+    [self winner];
+    [self winner];
+    [self winner];
+    [self winner];
+    [self winner];
+    
     //三等奖
+    [self winner];
     [self double];
     [self winner];
     [self winner];
-    
+    [self winner];
+    [self double];
+    [self winner];
+    [self winner];
+
     //二等奖
+    [self winner];
+    [self winner];
     [self double];
-    [self double];
-    [self double];
     [self winner];
     [self winner];
-    [self winner];
-    [self winner];
-    
+
     //一等奖
     [self double];
-    [self double];
-    [self double];
     [self winner];
+    [self winner1];
     [self winner];
+  
+    //特等奖
+    [self double];
     [self winner];
     [self winner];
 }
@@ -96,6 +134,12 @@
     [self.doubleNumbers removeObject:n];
     [self.lotteryNumbers removeObject:n];
     [self.luckyNumbers addObject:n];
+}
+
+-(void)winner1 {
+    
+    [self.lotteryNumbers removeObject:X];
+    [self.luckyNumbers addObject:X];
 }
 
 -(void)winner {
@@ -118,9 +162,37 @@
     self.stop = !self.stop;
 }
 
+- (void)trigger2 {
+    
+    if (self.stop == NO) {
+        [timer2 setFireDate:[NSDate distantPast]];
+    } else {
+        [timer2 setFireDate:[NSDate distantFuture]];
+        [self performSelector:@selector(playWinSound)
+                   withObject:nil
+                   afterDelay:.5];
+        [self.stuffList removeObject:self.LotteryLabel.stringValue];
+    }
+    self.stop = !self.stop;
+}
+
 -(void)luckyDrawAnimate {
     
-    self.LotteryLabel.stringValue = [NSString stringWithFormat:@"%u",arc4random()%45];
+    self.LotteryLabel.stringValue = [NSString stringWithFormat:@"%u",arc4random()%34];
+    [self performSelector:@selector(playCrunchSound)
+               withObject:nil
+               afterDelay:.5];
+}
+
+-(void)luckyDrawStuffNameAnimate {
+    
+    self.LotteryLabel.font = [NSFont systemFontOfSize:60];
+    if (self.stuffList.count > 0) {
+       self.LotteryLabel.stringValue = self.stuffList[arc4random()%self.stuffList.count];
+    } else {
+       self.LotteryLabel.stringValue = @"抽完啦~";
+    }
+
     [self performSelector:@selector(playCrunchSound)
                withObject:nil
                afterDelay:.5];
@@ -128,8 +200,8 @@
 
 -(void)getWinnerNumber {
     
-    if (times < 17) {
-        NSNumber *n = self.luckyNumbers[times % 17];
+    if (times < 28) {
+        NSNumber *n = self.luckyNumbers[times % 28];
         self.LotteryLabel.stringValue = n.stringValue;
     } else {
         NSNumber *n = self.lotteryNumbers.random;
