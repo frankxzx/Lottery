@@ -10,7 +10,7 @@
 #import "NSMutableArray+lottery.h"
 #import <AudioToolbox/AudioToolbox.h>
 
-#define X @29
+#define X @12
 @interface ViewController() {
     
     SystemSoundID winSoundID;
@@ -81,6 +81,7 @@
         [self.lotteryNumbers addObject:@(i)];
     }
     [self.lotteryNumbers removeObjectsInArray:self.doubleNumbers];
+    [self.lotteryNumbers removeObjectsInArray:@[@18,@5,@39,@17,@6,@16,@37,@23]];
     {
     NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"StuffList" ofType:@"plist"]];
     NSArray *array = [NSArray arrayWithContentsOfURL:url];
